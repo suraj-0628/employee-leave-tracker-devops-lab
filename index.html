@@ -105,20 +105,36 @@
     }
     .action-btn {
       background: #ef4444;
+      color: #fff;
       margin: 0;
-      padding: 8px 10px;
-      border-radius: 6px;
+      padding: 10px 14px;
+      border-radius: 999px;
       font-size: 0.95rem;
+      border: none;
+      cursor: pointer;
+      transition: background 0.2s ease, transform 0.15s ease;
     }
     .action-btn:hover {
       background: #dc2626;
+      transform: translateY(-1px);
+    }
+    .action-btn:focus {
+      outline: 2px solid rgba(248, 113, 113, 0.5);
+      outline-offset: 3px;
+    }
+    .table-wrapper {
+      overflow-x: auto;
+    }
+    td:last-child, th:last-child {
+      text-align: center;
+      width: 142px;
     }
     .message {
       padding: 12px 14px;
       border-radius: 8px;
       margin-bottom: 16px;
       display: none;
-    }
+    
     .message.success {
       background: #d1fae5;
       color: #065f46;
