@@ -72,6 +72,19 @@ function renderRequests() {
 
 function deleteRequest(id) {
   const requests = loadRequests();
+  const requestToDelete = requests.find((request) => request.id === id);
+  if (!requestToDelete) {
+    showMessage('Request not found.', 'error');
+    return;
+  }
+
+  const confirmed = window.confirm(
+    `Cancel leave for ${requestToDelete.employeeName} (${requestToDelete.employeeId}) from ${requestToDelete.fromDate} to ${requestToDelete.toDate}?`
+  );
+  if (!confirmed) {
+    return;
+  }
+
   const updated = requests.filter((request) => request.id !== id);
   saveRequests(updated);
   renderRequests();
