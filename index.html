@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Employee Leave Tracker</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: #f4f7fb;
+      color: #333;
+    }
+    .container {
+      max-width: 960px;
+      margin: 0 auto;
+      padding: 24px;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 16px;
+      color: #1a202c;
+    }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 8px 24px rgba(0,0,0,0.08);
+      padding: 22px;
+      margin-bottom: 24px;
+    }
+    label {
+      display: block;
+      margin-bottom: 6px;
+      font-weight: 600;
+    }
+    input, select {
+      width: 100%;
+      padding: 10px 12px;
+      border: 1px solid #cbd5e0;
+      border-radius: 6px;
+      font-size: 1rem;
+      margin-bottom: 16px;
+      box-sizing: border-box;
+    }
+    button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: 12px 18px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-size: 1rem;
+      background: #2563eb;
+      color: #fff;
+      transition: background 0.2s ease;
+    }
+    button:hover {
+      background: #1d4ed8;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 12px;
+    }
+    th, td {
+      padding: 12px 10px;
+      text-align: left;
+      border-bottom: 1px solid #e2e8f0;
+    }
+    th {
+      background: #eef2ff;
+      font-weight: 700;
+    }
+    .action-btn {
+      background: #ef4444;
+      margin: 0;
+      padding: 8px 10px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+    }
+    .action-btn:hover {
+      background: #dc2626;
+    }
+    .message {
+      padding: 12px 14px;
+      border-radius: 8px;
+      margin-bottom: 16px;
+      display: none;
+    }
+    .message.success {
+      background: #d1fae5;
+      color: #065f46;
+    }
+    .message.error {
+      background: #fee2e2;
+      color: #991b1b;
+    }
+    @media (min-width: 768px) {
+      .grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Employee Leave Tracker</h1>
+
+    <div class="card">
+      <div id="message" class="message"></div>
+      <form id="leaveForm">
+        <div class="grid">
+          <div>
+            <label for="employeeId">Employee ID</label>
+            <input type="text" id="employeeId" name="employeeId" placeholder="Enter employee ID" required />
+          </div>
+          <div>
+            <label for="employeeName">Employee Name</label>
+            <input type="text" id="employeeName" name="employeeName" placeholder="Enter employee name" required />
+          </div>
+        </div>
+
+        <label for="leaveType">Leave Type</label>
+        <select id="leaveType" name="leaveType" required>
+          <option value="">Choose a leave type</option>
+          <option value="Sick Leave">Sick Leave</option>
+          <option value="Vacation">Vacation</option>
+          <option value="Personal Leave">Personal Leave</option>
+          <option value="Other">Other</option>
+        </select>
+
+        <div class="grid">
+          <div>
+            <label for="fromDate">From Date</label>
+            <input type="date" id="fromDate" name="fromDate" required />
+          </div>
+          <div>
+            <label for="toDate">To Date</label>
+            <input type="date" id="toDate" name="toDate" required />
+          </div>
+        </div>
+
+        <button type="submit">Submit Leave Request</button>
+      </form>
+    </div>
+
+    <div class="card">
+      <h2>All Leave Requests</h2>
+      <div class="table-wrapper">
+        <table id="requestsTable">
+          <thead>
+            <tr>
+              <th>Employee ID</th>
+              <th>Name</th>
+              <th>Leave Type</th>
+              <th>From</th>
+              <th>To</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="requestsBody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
